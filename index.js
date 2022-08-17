@@ -1,9 +1,10 @@
+// Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/manager");
-const { buildFailureTestResult } = require("@jest/test-result");
+const HTMLGen = require('./src/generateHTML');
 
 // Array of prompts for the user
 const genQuestions = [
@@ -64,50 +65,46 @@ const intQuestions = [
 ];
 
 // Write the readme data to a file
-function writeToFile(fileName, data) {
-  fs.writeFile(fileName, data, (err) =>
+function writeToFile(fileName, teamHTML) {
+  fs.writeFile(fileName, teamHTML, (err) =>
     err ? console.log(err) : console.log("Success!")
   );
 }
 
-function buildTeam(team, choice){
-    console.log(choice);
-    if (choice !== "Finish building my team.") {
-        console.log(`Please enter ${choice.toLowerCase()} information.`);
-        if (choice === "Engineer") {
-            addEngineer(team);
-        } else{
-            addIntern(team);
-        }
+function buildTeam(team, choice) {
+  console.log(choice);
+  if (choice !== "Finish building my team.") {
+    console.log(`Please enter ${choice.toLowerCase()} information.`);
+    if (choice === "Engineer") {
+      addEngineer(team);
     } else {
-        console.log(team);
+      addIntern(team);
     }
+  } else {
+    teamHTML = HTMLGen(team);
+    writeToFile("./dist/index.html", teamHTML);
+  }
 }
 
-function addEngineer(team){
-    inquirer.prompt(engQuestions).then((data) => {
-        const engineer = new Engineer(
-          data.name,
-          data.idNum,
-          data.email,
-          data.github
-        );
-        team.push(engineer);
-        buildTeam(team, data.teamAdd);
-      });
+function addEngineer(team) {
+  inquirer.prompt(engQuestions).then((data) => {
+    const engineer = new Engineer(
+      data.name,
+      data.idNum,
+      data.email,
+      data.github
+    );
+    team.push(engineer);
+    buildTeam(team, data.teamAdd);
+  });
 }
 
-function addIntern(team){
-    inquirer.prompt(intQuestions).then((data) => {
-        const intern = new Intern(
-          data.name,
-          data.idNum,
-          data.email,
-          data.school
-        );
-        team.push(intern);
-        buildTeam(team, data.teamAdd);
-      });
+function addIntern(team) {
+  inquirer.prompt(intQuestions).then((data) => {
+    const intern = new Intern(data.name, data.idNum, data.email, data.school);
+    team.push(intern);
+    buildTeam(team, data.teamAdd);
+  });
 }
 
 // Prompt for user input, use MDGen to format the readme with the data, then use writeToFile to create the readme file
@@ -123,9 +120,6 @@ function init() {
     );
     team.push(manager);
     buildTeam(team, data.teamAdd);
-
-    // markdownData = MDGen(rawData);
-    // writeToFile("./sample/README.md", markdownData);
   });
 }
 
