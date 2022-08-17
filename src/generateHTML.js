@@ -1,6 +1,7 @@
 function addCards(team){
     let engineers = '';
     let interns = '';
+    let allCards = '';
     for (let i = 1; i < team.length; i++){
         if(team[i].role === "Engineer"){
             engineers += addEngineerCard(team[i]);
@@ -10,14 +11,52 @@ function addCards(team){
             break;
         }
     }
-    return `<!-- Engineer Row -->\n${engineers}\n<!-- Intern Row -->\n${interns}`;
+
+    if(engineers.length !== 0){
+        allCards += `<!-- Engineer Row -->\n<div class="row justify-content-center text-white border-bottom">\n${engineers}</div>\n`;
+    }
+    if(interns.length !== 0){
+        allCards = `<!-- Intern Row -->\n<div class="row justify-content-center text-white">\n${interns}</div>\n`;
+    }
+    return allCards;
 }
 
 function addInternCard(intern){
+    return `<div class="col-xl-4 col-lg-5 col-md-7">
+    <div class="card shadow m-2">
+      <div class="card-header bg-primary py-2 px-3">
+        <h4 class="my-1">${intern.name}</h4>
+        <h5 class="my-1">${intern.role}</h5>
+      </div>
+      <ul class="list-group list-group-flush bg-light py-4 px-3">
+        <li class="list-group-item border text-dark py-2 px-3">ID: ${intern.idNum}</li>
+        <li class="list-group-item border text-dark py-2 px-3">
+            Email: <a href="mailto:${intern.email}">${intern.email}</a>
+        </li>
+        <li class="list-group-item border text-dark py-2 px-3">School: ${intern.school}</li>
+      </ul>
+    </div>
+  </div>\n`;
 
 }
 function addEngineerCard(engineer){
-
+    return `<div class="col-xl-4 col-lg-5 col-md-7">
+    <div class="card shadow m-2">
+      <div class="card-header bg-primary py-2 px-3">
+        <h4 class="my-1">${engineer.name}</h4>
+        <h5 class="my-1">${engineer.role}</h5>
+      </div>
+      <ul class="list-group list-group-flush bg-light py-4 px-3">
+        <li class="list-group-item border text-dark py-2 px-3">ID: ${engineer.idNum}</li>
+        <li class="list-group-item border text-dark py-2 px-3">
+            Email: <a href="mailto:${engineer.email}">${engineer.email}</a>
+        </li>
+        <li class="list-group-item border text-dark py-2 px-3">
+            Github: <a href="https://github.com/${engineer.github}">${engineer.github}</a>
+        </li>
+      </ul>
+    </div>
+  </div>\n`;
 }
 
 function generateHTML(team){
@@ -74,51 +113,6 @@ function generateHTML(team){
             </div>
           </div>
           ${addCards(team)}
-          <!-- Engineer Row -->
-          <div class="row justify-content-center text-white border-bottom">
-            <div class="col-xl-4 col-lg-5 col-md-7">
-              <div class="card shadow m-2">
-                <div class="card-header bg-primary py-2 px-3">
-                  <h4 class="my-1">Featured</h4>
-                  <h5 class="my-1">Hello</h5>
-                </div>
-                <ul class="list-group list-group-flush bg-light py-4 px-3">
-                  <li class="list-group-item border text-dark py-2 px-3"></li>
-                  <li class="list-group-item border text-dark py-2 px-3"></li>
-                  <li class="list-group-item border text-dark py-2 px-3"></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-5 col-md-7">
-              <div class="card shadow m-2">
-                <div class="card-header bg-primary py-2 px-3">
-                  <h4 class="my-1">Featured</h4>
-                  <h5 class="my-1">Hello</h5>
-                </div>
-                <ul class="list-group list-group-flush bg-light py-4 px-3">
-                  <li class="list-group-item border text-dark py-2 px-3"></li>
-                  <li class="list-group-item border text-dark py-2 px-3"></li>
-                  <li class="list-group-item border text-dark py-2 px-3"></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <!-- Intern Row -->
-          <div class="row justify-content-center text-white">
-            <div class="col-xl-4 col-lg-5 col-md-7">
-              <div class="card shadow m-2">
-                <div class="card-header bg-primary py-2 px-3">
-                  <h4 class="my-1">Featured</h4>
-                  <h5 class="my-1">Hello</h5>
-                </div>
-                <ul class="list-group list-group-flush bg-light py-4 px-3">
-                  <li class="list-group-item border text-dark py-2 px-3"></li>
-                  <li class="list-group-item border text-dark py-2 px-3"></li>
-                  <li class="list-group-item border text-dark py-2 px-3"></li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
       </body>
     </html>
