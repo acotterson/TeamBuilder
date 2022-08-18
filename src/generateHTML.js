@@ -1,7 +1,10 @@
+// Run through the team list, add specifed cards based on roles, return all the html to the main template
 function addCards(team){
     let engineers = '';
     let interns = '';
     let allCards = '';
+
+    // Already have manager, so run through the rest of the team adding cards based on roles
     for (let i = 1; i < team.length; i++){
         if(team[i].role === "Engineer"){
             engineers += addEngineerCard(team[i]);
@@ -12,6 +15,7 @@ function addCards(team){
         }
     }
 
+    // Add the row html and the list of cards if we have people in that role
     if(engineers.length !== 0){
         allCards += `<!-- Engineer Row -->\n<div class="row justify-content-center text-white border-bottom">\n${engineers}</div>\n`;
     }
@@ -21,6 +25,7 @@ function addCards(team){
     return allCards;
 }
 
+// Add html for an intern card
 function addInternCard(intern){
     return `<div class="col-xl-4 col-lg-5 col-md-7">
     <div class="card shadow m-2">
@@ -39,6 +44,8 @@ function addInternCard(intern){
   </div>\n`;
 
 }
+
+// Add html for an engineer card
 function addEngineerCard(engineer){
     return `<div class="col-xl-4 col-lg-5 col-md-7">
     <div class="card shadow m-2">
@@ -59,6 +66,7 @@ function addEngineerCard(engineer){
   </div>\n`;
 }
 
+// Main html default content
 function generateHTML(team){
     return `<!DOCTYPE html>
     <html lang="en">

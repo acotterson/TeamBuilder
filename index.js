@@ -7,6 +7,7 @@ const Manager = require("./lib/manager");
 const HTMLGen = require('./src/generateHTML');
 
 // Array of prompts for the user
+// Questions that apply to everyone
 const genQuestions = [
   {
     type: "input",
@@ -25,6 +26,7 @@ const genQuestions = [
   },
 ];
 
+// User choice question
 const finalQuestion = [
   {
     type: "list",
@@ -34,6 +36,7 @@ const finalQuestion = [
   },
 ];
 
+// Manager questions
 const manQuestions = [
   ...genQuestions,
   {
@@ -44,6 +47,7 @@ const manQuestions = [
   ...finalQuestion,
 ];
 
+// Engineer questions
 const engQuestions = [
   ...genQuestions,
   {
@@ -54,6 +58,7 @@ const engQuestions = [
   ...finalQuestion,
 ];
 
+// Intern questions
 const intQuestions = [
   ...genQuestions,
   {
@@ -64,13 +69,14 @@ const intQuestions = [
   ...finalQuestion,
 ];
 
-// Write the readme data to a file
+// Write the html data to a file
 function writeToFile(fileName, teamHTML) {
   fs.writeFile(fileName, teamHTML, (err) =>
     err ? console.log(err) : console.log("Success!")
   );
 }
 
+// Add members to the team until user is finished, then get the html data and send it to be written
 function buildTeam(team, choice) {
   console.log(choice);
   if (choice !== "Finish building my team.") {
@@ -86,6 +92,7 @@ function buildTeam(team, choice) {
   }
 }
 
+// Add an engineer to the team
 function addEngineer(team) {
   inquirer.prompt(engQuestions).then((data) => {
     const engineer = new Engineer(
@@ -99,6 +106,7 @@ function addEngineer(team) {
   });
 }
 
+// Add an intern to the team
 function addIntern(team) {
   inquirer.prompt(intQuestions).then((data) => {
     const intern = new Intern(data.name, data.idNum, data.email, data.school);
@@ -107,7 +115,7 @@ function addIntern(team) {
   });
 }
 
-// Prompt for user input, use MDGen to format the readme with the data, then use writeToFile to create the readme file
+// Prompt for manager info, add him to team, and then run buildTeam function
 function init() {
   const team = [];
   console.log("Please enter manager information.");
