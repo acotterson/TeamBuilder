@@ -22,7 +22,7 @@ Download the files. Open a bash terminal in the main directory. Run "npm install
 
 ## Usage
 
-Run "node index.js". Answer the prompts. Once all prompts are answered, an index.html file will be generated in the "dist" folder that, when opened, will visually represent your team members, along with their basic information and helpful links.
+Run "node index.js". Answer the prompts. Once all prompts are answered, an index.html file will be generated in the "dist" folder that, when opened, will visually represent your team members along with their basic information and helpful links.
 
 Each team member includes name, id, and email information as well as a link to send an email. Additionally, the manager information card includes his office number, the engineer cards include their github profile names, which are linked to their github profiles, and the intern cards include the school they are hail from.
 
