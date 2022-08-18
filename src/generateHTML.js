@@ -16,7 +16,7 @@ function addCards(team){
         allCards += `<!-- Engineer Row -->\n<div class="row justify-content-center text-white border-bottom">\n${engineers}</div>\n`;
     }
     if(interns.length !== 0){
-        allCards = `<!-- Intern Row -->\n<div class="row justify-content-center text-white">\n${interns}</div>\n`;
+        allCards += `<!-- Intern Row -->\n<div class="row justify-content-center text-white">\n${interns}</div>\n`;
     }
     return allCards;
 }
@@ -26,10 +26,10 @@ function addInternCard(intern){
     <div class="card shadow m-2">
       <div class="card-header bg-primary py-2 px-3">
         <h4 class="my-1">${intern.name}</h4>
-        <h5 class="my-1">${intern.role}</h5>
+        <h5 class="my-1"><img src="../Assets/images/intern.png" height="25em" width="25em"></img>  ${intern.role}</h5>
       </div>
       <ul class="list-group list-group-flush bg-light py-4 px-3">
-        <li class="list-group-item border text-dark py-2 px-3">ID: ${intern.idNum}</li>
+        <li class="list-group-item border text-dark py-2 px-3">ID: ${intern.id}</li>
         <li class="list-group-item border text-dark py-2 px-3">
             Email: <a href="mailto:${intern.email}">${intern.email}</a>
         </li>
@@ -44,10 +44,10 @@ function addEngineerCard(engineer){
     <div class="card shadow m-2">
       <div class="card-header bg-primary py-2 px-3">
         <h4 class="my-1">${engineer.name}</h4>
-        <h5 class="my-1">${engineer.role}</h5>
+        <h5 class="my-1"><img src="../Assets/images/engineer.png" height="25em" width="25em"></img>  ${engineer.role}</h5>
       </div>
       <ul class="list-group list-group-flush bg-light py-4 px-3">
-        <li class="list-group-item border text-dark py-2 px-3">ID: ${engineer.idNum}</li>
+        <li class="list-group-item border text-dark py-2 px-3">ID: ${engineer.id}</li>
         <li class="list-group-item border text-dark py-2 px-3">
             Email: <a href="mailto:${engineer.email}">${engineer.email}</a>
         </li>
@@ -96,27 +96,25 @@ function generateHTML(team){
               <div class="card shadow m-2">
                 <div class="card-header bg-primary py-2 px-3">
                   <h4 class="my-1">${team[0].name}</h4>
-                  <h5 class="my-1">${team[0].role}</h5>
+                  <h5 class="my-1"><img src="../Assets/images/manager.png" height="25em" width="25em"></img>  ${team[0].role}</h5>
                 </div>
                 <ul class="list-group list-group-flush bg-light py-4 px-3">
                   <li class="list-group-item border text-dark py-2 px-3">
-                    ID: ${team[0].idNum}
+                    ID: ${team[0].id}
                   </li>
                   <li class="list-group-item border text-dark py-2 px-3">
                     Email: <a href="mailto:${team[0].email}">${team[0].email}</a>
                   </li>
                   <li class="list-group-item border text-dark py-2 px-3">
-                    Office number: ${team[0].officeNum}
+                    Office number: ${team[0].officeNumber}
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          ${addCards(team)}
-        </div>
+          ${addCards(team)}</div>
       </body>
-    </html>
-    `;
+    </html>`;
 }
 
 module.exports = generateHTML;
