@@ -26,7 +26,7 @@ function addInternCard(intern){
     <div class="card shadow m-2">
       <div class="card-header bg-primary py-2 px-3">
         <h4 class="my-1">${intern.name}</h4>
-        <h5 class="my-1"><img src="../Assets/images/intern.png" height="25em" width="25em"></img>  ${intern.role}</h5>
+        <h5 class="my-1"><img src="../Assets/images/internW.png" height="25em" width="25em"></img>  ${intern.role}</h5>
       </div>
       <ul class="list-group list-group-flush bg-light py-4 px-3">
         <li class="list-group-item border text-dark py-2 px-3">ID: ${intern.id}</li>
@@ -44,7 +44,7 @@ function addEngineerCard(engineer){
     <div class="card shadow m-2">
       <div class="card-header bg-primary py-2 px-3">
         <h4 class="my-1">${engineer.name}</h4>
-        <h5 class="my-1"><img src="../Assets/images/engineer.png" height="25em" width="25em"></img>  ${engineer.role}</h5>
+        <h5 class="my-1"><img src="../Assets/images/engineerW.png" height="25em" width="25em"></img>  ${engineer.role}</h5>
       </div>
       <ul class="list-group list-group-flush bg-light py-4 px-3">
         <li class="list-group-item border text-dark py-2 px-3">ID: ${engineer.id}</li>
@@ -89,14 +89,14 @@ function generateHTML(team){
         <header class="text-center bg-danger text-white font-weight-bolder p-3">
           <h1>My Team</h1>
         </header>
-        <div class="container w-75 p-5">
+        <div class="container w-xs-75 p-5">
           <!-- Manager Row -->
           <div class="row justify-content-center text-white border-bottom">
             <div class="col-xl-4 col-lg-5 col-md-7">
               <div class="card shadow m-2">
                 <div class="card-header bg-primary py-2 px-3">
                   <h4 class="my-1">${team[0].name}</h4>
-                  <h5 class="my-1"><img src="../Assets/images/manager.png" height="25em" width="25em"></img>  ${team[0].role}</h5>
+                  <h5 class="my-1"><img src="../Assets/images/managerW.png" height="25em" width="25em"></img>  ${team[0].role}</h5>
                 </div>
                 <ul class="list-group list-group-flush bg-light py-4 px-3">
                   <li class="list-group-item border text-dark py-2 px-3">
