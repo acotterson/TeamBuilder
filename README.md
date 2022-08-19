@@ -30,9 +30,9 @@ Be aware that running the application again will overwrite the existing index.ht
 
 Image resources for the webpage are located in ../Assets/images/. 
 
-[Video Link of Usage](https://watch.screencastify.com/v/GnOfxxEeXg6mfAM5mJvI)
+[Video Link of Usage](https://watch.screencastify.com/v/EPbNBpCsEQztKyTLBzPV)
 
-https://user-images.githubusercontent.com/35825121/184833727-37a22623-433b-4d58-a335-70f0dac8f378.mp4
+https://user-images.githubusercontent.com/35825121/185670893-b456918f-d908-43dc-8846-ae0bb9140b7e.mp4
 
 ## Questions
 
